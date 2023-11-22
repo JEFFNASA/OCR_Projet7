@@ -22,8 +22,13 @@ footer {visibility:hidden;}
 
 st.markdown(sysmenu, unsafe_allow_html=True)
 
-df_dashboard = pd.read_csv('df_API_BIS.csv', encoding='utf-8')
-df = pd.read_csv('df_data_BIS.csv', encoding='utf-8')
+
+df_dashboard_url = "https://raw.githubusercontent.com/JEFFNASA/OCR_Projet7/main/Dashboard/df_API_BIS.csv"
+df_url = "https://raw.githubusercontent.com/JEFFNASA/OCR_Projet7/main/Dashboard/df_data_BIS.csv"
+df = pd.read_csv(df_url)
+df_dashboard = pd.read_csv(df_dashboard_url)
+#df_dashboard = pd.read_csv('df_API_BIS.csv', encoding='utf-8')
+#df = pd.read_csv('df_data_BIS.csv', encoding='utf-8')
 df_dashboard.drop("TARGET", inplace=True, axis=1)
 model = joblib.load('best_model.joblib')
 
@@ -146,7 +151,8 @@ def predict():
             else:
                 var2_cat = 0
         
-        df_comp = pd.read_csv('df_comp_BIS.csv', encoding='utf-8')
+        df_comp = pd.read_csv("https://raw.githubusercontent.com/JEFFNASA/OCR_Projet7/main/Dashboard/df_comp_BIS.csv")
+        #df_comp = pd.read_csv('df_comp_BIS.csv', encoding='utf-8')
         df_comp = feature_engineering(df_comp)
         new_df = feature_engineering(df_comp)
         if variable1 == variable2:

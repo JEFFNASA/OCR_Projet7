@@ -21,7 +21,9 @@ def predict(ID):
     For rendering results on HTML GUI
     '''
     
-    df_test = pd.read_csv('df_API_BIS.csv', encoding='utf-8')
+    url_df = 'https://raw.githubusercontent.com/JEFFNASA/OCR_Projet7/main/API/df_API_BIS.csv'
+    df_test = pd.read_csv(url_df)
+    #df_test = pd.read_csv('df_API_BIS.csv', encoding='utf-8')
     df_test.drop("TARGET", inplace=True, axis=1)
     liste_clients = list(df_test['SK_ID_CURR'].unique())
     
